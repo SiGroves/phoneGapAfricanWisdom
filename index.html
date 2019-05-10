@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *; img-src * data:" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+      <!-- AngularJs Javascript File -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+
+      
+      <!-- Bootstrap -->
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+      <script src="quoteGenerator.js"></script>
+      <style>
+            [animate-on-change] {
+              transition: all 2s;
+              -webkit-transition: all 2s;
+            }
+            [animate-on-change].changed {
+                background: #ffe259;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to top, #ffa751, #ffe259);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to top, #ffa751, #ffe259); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+              transition: none;
+              -webkit-transition: none;
+            }
+
+      </style>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>African Wisdom</title>
+</head>
+
+<body ng-app="QuoteRandomizer" ng-controller="QuoteCtrl">
+    <div id="startPage" data-role="page">
+
+            <div data-role="header">
+                <h1>Wisdom of Africa</h1>
+            </div><!-- /header -->
+
+            <div role="main" class="ui-content">
+                <div class="container" ng-hide="loading">
+                    <div class="card" style="width: 100%;"> 
+                    <img class="card-img-top" src="img/eyeOfAfrica.png" style="width:100%" alt="Eye of Africa"> 
+                      <div class="card-body">
+                        <p class="card-text" animate-on-change="quote">{{quote}}</p>
+                        
+                        <button ng-click="getNewQuote()" class="btn btn-primary">View More Wisdom</button>
+                        <p class="card-text">Just one from {{quoteList.length}} recorded pieces of ancient wisdom</p>
+                      </div>
+                    </div>
+                   <div id="deviceready" class="blink">
+                            <p class="event listening">Connecting to Device</p>
+                            <p class="event received">Device is Ready</p>
+                    </div>
+                </div>
+                
+            </div><!-- /content -->
+
+            <div data-role="footer">
+                <h4>Bringing African wisdom to the West</h4>
+            </div><!-- /footer -->
+
+        </div><!-- /page -->
+
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+
+</body>
+
+</html>
